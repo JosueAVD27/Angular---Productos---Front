@@ -1,0 +1,50 @@
+<section class="content-navbar">
+  <main class="navbar">
+    <div class="identity-page">
+      <img class="logo-page" src="../assets/img/logo/LogoJosue.png" alt="logo">
+      <h1>Proyecto Arquitectura</h1>
+    </div>
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <a (click)="changeSection('products')" [ngClass]="sectionClass('products')">
+          <li>Productos</li>
+        </a>
+        <a (click)="changeSection('category')" [ngClass]="sectionClass('category')">
+          <li>Categorías</li>
+        </a>
+        <a (click)="changeSection('categoryProducts')" [ngClass]="sectionClass('categoryProducts')">
+          <li>Producto categoría</li>
+        </a>
+        <a (click)="changeSection('inventario')" [ngClass]="sectionClass('inventario')">
+          <li>Inventario</li>
+        </a>
+        <a (click)="changeSection('members')" [ngClass]="sectionClass('members')">
+          <img class="img-user" src="{{user_icon}}" alt="Users">
+        </a>
+      </ul>
+    </nav>
+  </main>
+</section>
+
+<!-- Vistas -->
+<div *ngIf="activeSection === 'products'">
+  <app-products></app-products>
+</div>
+
+<div *ngIf="activeSection === 'category'">
+  <app-category></app-category>
+</div>
+
+<div *ngIf="activeSection === 'categoryProducts'">
+  <app-product-category></app-product-category>
+</div>
+
+<div *ngIf="activeSection === 'inventario'">
+  <app-inventary></app-inventary>
+</div>
+
+
+<div *ngIf="activeSection === 'members'">
+  <app-members></app-members>
+</div>

@@ -1,0 +1,87 @@
+<section class="content-category">
+  <div class="categories">
+    <div>
+      <h2>Categorías</h2>
+
+      <div class="spacer"></div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Nombre</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngIf="paginatedCategories.length > 0; else noData">
+
+            <tr *ngFor="let category of paginatedCategories; let i = index">
+              <td>{{ (currentPage - 1) * pageSize + i + 1 }}</td>
+              <td>{{ category.nombre }}</td>
+              <td class="table_buttons">
+                <button type="button" (click)="updateCategories(category)" class="button4 efects2__button2 btn_editar"
+                  title="Editar">
+                  <div class="button-content"><img src="{{ edit_icon }}" alt="Editar"></div>
+                </button>
+                <button type="button" (click)="deleteCategories(category.id)"
+                  class="button4 efects2__button2 btn_eliminar" title="Eliminar">
+                  <div class="button-content"><img src="{{ delete_icon }}" alt="Eliminar"></div>
+                </button>
+              </td>
+            </tr>
+          </ng-container>
+          <ng-template #noData>
+            <tr>
+              <td colspan="4">No hay datos disponibles</td>
+            </tr>
+          </ng-template>
+        </tbody>
+      </table>
+
+      <div class="pagination">
+        <div class="info-paginacion">
+          <span class="total">Total categorías: {{filteredCategories.length}} </span>
+          <span class="paginas">Paginas: {{ currentPage }} / {{ lastPage }}</span>
+        </div>
+        <div class="buttons-paginacion">
+          <button class="button2 btn_navegacion efects2__button2" type="button" (click)="prevPage()">Anterior</button>
+          <button class="button2 btn_navegacion efects2__button2" type="button" (click)="nextPage()">Siguiente</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-category">
+    <div>
+      <div class="container-filtro">
+        <h3>Filtrar categoría</h3>
+        <input class="input" type="text" placeholder="Buscar categoría..." [(ngModel)]="searchTerm"
+          (input)="updatefilteredCategories()">
+      </div>
+
+      <h3>{{ editingCategories ? 'Actualizar' : 'Agregar' }} categoría</h3>
+
+      <div class="spacer"></div>
+
+      <form (ngSubmit)="addOrupdateCategories()" #productForm="ngForm" class="form">
+        <div>
+          <label for="nombre">Nombre:</label>
+          <input class="input" placeholder="Ingresar nombre de la categoría" type="text" id="nombre" name="nombre"
+            [(ngModel)]="newCategory.nombre" required>
+        </div>
+
+        <div *ngIf="errorMessage" class="error-message">
+          {{ errorMessage }}
+        </div>
+
+        <div class="content_button">
+          <button class="button2 {{ editingCategories ? 'btn_actualizar' : 'btn_nuevo' }} efects__button"
+            type="submit">{{ editingCategories ? 'Actualizar' : 'Nueva Categoría' }}</button>
+          <button *ngIf="editingCategories" class="button2 btn_eliminar efects__button" type="button"
+            (click)="resetForm()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

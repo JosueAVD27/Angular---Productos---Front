@@ -1,0 +1,113 @@
+@use "../../../assets/scss/vars/colors" as colors;
+@use "../../../assets/scss/components/input";
+@use "../../../assets/scss/components/buttons";
+@use "../../../assets/scss/components/table";
+
+.content-category {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  padding: 50px;
+  gap: 30px;
+
+  .categories,
+  .form-category {
+    display: grid;
+    gap: 10px;
+    border-radius: 15px;
+    padding: 20px;
+    background-color: colors.$white;
+    box-shadow:
+      0px 8px 10px colors.$sha2,
+      -10px -10px 10px colors.$sha1;
+  }
+
+  .table_buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+
+    .button-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+
+      img {
+        width: 20px;
+      }
+    }
+  }
+
+  .form-category {
+    display: grid;
+
+    .container-filtro {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      border: 1px solid colors.$sha2;
+      padding: 15px;
+    }
+
+    .form {
+      display: grid;
+      gap: 10px;
+
+      div {
+        display: grid;
+      }
+
+      .content_button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+      }
+    }
+  }
+}
+
+.spacer {
+  height: 3px;
+  background-color: colors.$primary;
+  border-radius: 50px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.pagination {
+  display: grid;
+  gap: 15px;
+  margin: 15px 0;
+  width: 100%;
+
+  .info-paginacion {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    .total {
+      text-align: start;
+      font-size: 12px;
+    }
+
+    .paginas {
+      font-size: 12px;
+      text-align: end;
+    }
+  }
+
+  .buttons-paginacion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+  }
+}
+
+.error-message {
+  font-size: 10px;
+  text-align: center;
+  color: colors.$red;
+}

@@ -1,0 +1,60 @@
+<section class="content-inventario">
+  <div class="contenedor">
+    <h2>Inventario</h2>
+
+    <div class="spacer"></div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Producto</th>
+          <th>Cantidad</th>
+          <th>Fecha</th>
+          <th>Tipo Movimiento</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container >
+
+          <tr >
+            <td></td>
+            <td></td>
+            <td class="table_buttons">
+              <button type="button" class="button4 efects2__button2 btn_editar"
+                title="Editar">
+                <div class="button-content"><img src="{{edit_icon}}" alt="Editar"></div>
+              </button>
+              <button type="button"
+                class="button4 efects2__button2 btn_eliminar" title="Eliminar">
+                <div class="button-content"><img src="{{delete_icon}}" alt="Eliminar"></div>
+              </button>
+            </td>
+          </tr>
+        </ng-container>
+        <ng-template #noData>
+          <tr>
+            <td colspan="6">No hay datos disponibles</td>
+          </tr>
+        </ng-template>
+      </tbody>
+    </table>
+
+
+    <div class="pagination">
+      <div class="info-paginacion">
+        <span class="total">Total categorías:  </span>
+        <span class="paginas">Paginas: </span>
+      </div>
+      <div class="buttons-paginacion">
+        <button class="button2 btn_navegacion efects2__button2" type="button" >Anterior</button>
+        <button class="button2 btn_navegacion efects2__button2" type="button" >Siguiente</button>
+      </div>
+    </div>
+
+    <div>
+
+    </div>
+  </div>
+</section>

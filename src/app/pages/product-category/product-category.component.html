@@ -1,0 +1,101 @@
+<section class="content-products-category">
+  <div class="products-category">
+    <div>
+      <h2>Productos Categoría</h2>
+
+      <div class="spacer"></div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Producto</th>
+            <th>Categoría</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngIf="paginatedProductsCategories.length > 0; else noData">
+            <tr *ngFor="let productCategory of paginatedProductsCategories; let i = index">
+              <td>{{ (currentPage - 1) * pageSize + i + 1 }}</td>
+              <td>{{ productCategory.producto_nombre }}</td>
+              <td>{{ productCategory.categoria_nombre }}</td>
+              <td class="table_buttons">
+                <button type="button" (click)="updateProductCategories(productCategory)"
+                  class="button4 efects2__button2 btn_editar" title="Editar">
+                  <div class="button-content"><img src="{{ edit_icon }}" alt="Editar"></div>
+                </button>
+                <button type="button" (click)="deleteProductCategories(productCategory.id)"
+                  class="button4 efects2__button2 btn_eliminar" title="Eliminar">
+                  <div class="button-content"><img src="{{ delete_icon }}" alt="Eliminar"></div>
+                </button>
+              </td>
+            </tr>
+          </ng-container>
+          <ng-template #noData>
+            <tr>
+              <td colspan="4">No hay datos disponibles</td>
+            </tr>
+          </ng-template>
+        </tbody>
+
+      </table>
+
+      <div class="pagination">
+        <div class="info-paginacion">
+          <span class="total">Total producto categoría: {{filteredProductsCategories.length}} </span>
+          <span class="paginas">Paginas: {{ currentPage }} / {{ lastPage }}</span>
+        </div>
+        <div class="buttons-paginacion">
+          <button class="button2 btn_navegacion efects2__button2" type="button" (click)="prevPage()">Anterior</button>
+          <button class="button2 btn_navegacion efects2__button2" type="button" (click)="nextPage()">Siguiente</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-products-category">
+    <div>
+      <div class="container-filtro">
+        <h3>Filtrar producto categoría</h3>
+        <input class="input" type="text" placeholder="Buscar producto categoría..." [(ngModel)]="searchTerm"
+          (input)="updateFilteredProductsCategories()">
+      </div>
+
+      <h3>{{ editingProductCategory ? 'Actualizar' : 'Agregar' }} producto categoría</h3>
+
+      <div class="spacer"></div>
+
+      <form (ngSubmit)="addOrUpdateProductCategory()" #productForm="ngForm" class="form">
+        <div>
+          <label for="nombre">Producto:</label>
+          <select class="input" id="producto_id" name="producto_id" [(ngModel)]="newProductCategory.producto_id"
+            required>
+            <option value="0">Seleccione</option>
+            <option *ngFor="let product of products" [value]="product.id">{{ product.nombre }}</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="precio">Categoria:</label>
+          <select class="input" id="categoria_id" name="categoria_id" [(ngModel)]="newProductCategory.categoria_id"
+            required>
+            <option value="0">Seleccione</option>
+            <option *ngFor="let category of categories" [value]="category.id">{{ category.nombre }}</option>
+          </select>
+        </div>
+
+        <div *ngIf="errorMessage" class="error-message">
+          {{ errorMessage }}
+        </div>
+
+        <div class="content_button">
+          <button class="button2 {{ editingProductCategory ? 'btn_actualizar' : 'btn_nuevo' }} efects__button"
+            type="submit">{{ editingProductCategory ? 'Actualizar' : 'Nuevo' }}</button>
+          <button *ngIf="editingProductCategory" class="button2 btn_eliminar efects__button" type="button"
+            (click)="resetForm()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
