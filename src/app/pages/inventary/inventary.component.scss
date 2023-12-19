@@ -35,6 +35,15 @@
   }
 }
 
+.container-filtro {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: 1px solid colors.$sha2;
+  padding: 15px;
+}
+
 .spacer {
   height: 3px;
   background-color: colors.$primary;

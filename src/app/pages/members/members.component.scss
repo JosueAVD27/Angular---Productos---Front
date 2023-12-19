@@ -25,11 +25,13 @@
       justify-content: center;
       gap: 15px;
       margin-bottom: 15px;
+      margin-top: 35px;
 
       .subtitle {
         display: grid;
         justify-content: center;
         margin-bottom: 15px;
+        color: darken(colors.$gray, 20%);
       }
 
       span {

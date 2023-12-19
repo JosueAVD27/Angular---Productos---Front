@@ -5,7 +5,6 @@ import { environment } from 'src/app/environments/environmen';
 import { Product } from '../models/product.model';
 import { Category } from '../models/category.model';
 import { ProductCategory } from '../models/productCategory.model';
-import { Inventario } from '../models/inventario.model';
 
 const base_url = environment.base_url;
 
@@ -83,16 +82,6 @@ export class CrudService {
   getInventario(): Observable<any> {
     const url = `${base_url}/movimientos_inventario`;
     return this.http.get<any>(url);
-  }
-
-  addInventario(inventario: Inventario): Observable<any> {
-    const url = `${base_url}/movimientos_inventario`;
-    return this.http.post<any>(url, inventario);
-  }
-
-  updateInventario(id: number, inventario: Inventario): Observable<any> {
-    const url = `${base_url}/movimientos_inventario/${id}`;
-    return this.http.put<any>(url, inventario);
   }
 
   deleteInventario(id: number): Observable<any> {

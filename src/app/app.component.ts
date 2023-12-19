@@ -11,7 +11,7 @@ const user_icon = icons.user_icon;
 export class AppComponent {
   user_icon: string = user_icon;
 
-  public activeSection: string = 'inventario';
+  public activeSection: string = 'members';
   public products: number = 0;
 
   // Función para cambiar la sección visible

@@ -4,6 +4,12 @@
 
     <div class="spacer"></div>
 
+    <div class="container-filtro">
+      <h3>Filtrar registro</h3>
+      <input class="input" type="text" placeholder="Buscar registro..." [(ngModel)]="searchTerm"
+        (input)="updateFilteredInventary()">
+    </div>
+
     <table>
       <thead>
         <tr>
@@ -16,17 +22,15 @@
         </tr>
       </thead>
       <tbody>
-        <ng-container >
-
-          <tr >
-            <td></td>
-            <td></td>
+        <ng-container *ngIf="paginatedInventary.length > 0; else noData">
+          <tr *ngFor="let inventario of paginatedInventary; let i = index">
+            <td>{{ (currentPage - 1) * pageSize + i + 1 }}</td>
+            <td>{{ inventario.producto_nombre }}</td>
+            <td>{{ inventario.cantidad }}</td>
+            <td>{{ inventario.fecha_movimiento }}</td>
+            <td>{{ inventario.tipo_movimiento }}</td>
             <td class="table_buttons">
-              <button type="button" class="button4 efects2__button2 btn_editar"
-                title="Editar">
-                <div class="button-content"><img src="{{edit_icon}}" alt="Editar"></div>
-              </button>
-              <button type="button"
+              <button type="button" (click)="deleteInventario(inventario.id)"
                 class="button4 efects2__button2 btn_eliminar" title="Eliminar">
                 <div class="button-content"><img src="{{delete_icon}}" alt="Eliminar"></div>
               </button>
@@ -44,12 +48,12 @@
 
     <div class="pagination">
       <div class="info-paginacion">
-        <span class="total">Total categorías:  </span>
-        <span class="paginas">Paginas: </span>
+        <span class="total">Total inventario: {{filteredInventary.length}} </span>
+        <span class="paginas">Paginas: {{ currentPage }} / {{ lastPage }}</span>
       </div>
       <div class="buttons-paginacion">
-        <button class="button2 btn_navegacion efects2__button2" type="button" >Anterior</button>
-        <button class="button2 btn_navegacion efects2__button2" type="button" >Siguiente</button>
+        <button class="button2 btn_navegacion efects2__button2" type="button" (click)="prevPage()">Anterior</button>
+        <button class="button2 btn_navegacion efects2__button2" type="button" (click)="nextPage()">Siguiente</button>
       </div>
     </div>
 
