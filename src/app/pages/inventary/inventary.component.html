@@ -15,9 +15,9 @@
         <tr>
           <th>No</th>
           <th>Producto</th>
+          <th>Tipo Movimiento</th>
           <th>Cantidad</th>
           <th>Fecha</th>
-          <th>Tipo Movimiento</th>
           <th></th>
         </tr>
       </thead>
@@ -26,9 +26,9 @@
           <tr *ngFor="let inventario of paginatedInventary; let i = index">
             <td>{{ (currentPage - 1) * pageSize + i + 1 }}</td>
             <td>{{ inventario.producto_nombre }}</td>
+            <td>{{ inventario.tipo_movimiento }}</td>
             <td>{{ inventario.cantidad }}</td>
             <td>{{ inventario.fecha_movimiento }}</td>
-            <td>{{ inventario.tipo_movimiento }}</td>
             <td class="table_buttons">
               <button type="button" (click)="deleteInventario(inventario.id)"
                 class="button4 efects2__button2 btn_eliminar" title="Eliminar">

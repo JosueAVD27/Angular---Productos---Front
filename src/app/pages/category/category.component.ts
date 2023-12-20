@@ -77,8 +77,6 @@ export class CategoryComponent implements OnInit {
       response => {
         this.errorMessage = '';
 
-        console.log('Categoria agregada con éxito:', response);
-
         this.newCategory = {
           nombre: ''
         };
